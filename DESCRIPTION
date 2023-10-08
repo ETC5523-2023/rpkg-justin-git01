@@ -1,11 +1,25 @@
-Package: change-this-to-your-pkg-name
-Title: What the Package Does (One Line, Title Case)
+Package: animeR
+Title: Explore the world of anime
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "your@email.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Hoang", "Do", , "hoangdo@email.com", role = c("aut", "cre"))
+Description: The animeR package is a versatile R tool designed for data exploration and analysis, offering access to two built-in datasets: anime and IKEA furniture. It provides a pre-built app, run using the `run_app()` function, for interactive exploration of IKEA furniture data. Additionally, the package includes two essential functions: `five_stat()`, which computes summary statistics for numeric variables, aiding in data distribution analysis, and `what_ave()`, facilitating the calculation of averages for unique values within categorical variables, enabling data comparison and analysis across categories. With these features, animeR empowers users to unlock valuable insights from their datasets effortlessly.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: es
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+LazyDataCompression: xz
+Imports: 
+  shiny,
+  tidyr,
+  dplyr
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

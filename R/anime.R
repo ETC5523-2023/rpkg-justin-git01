@@ -1,0 +1,44 @@
+#' Anime data
+#'
+#' A comprehensive ranking of numerous anime and manga titles,
+#' accompanied by a wealth of associated information.
+#' The data has been thoughtfully curated to streamline producers,
+#' genres, and studios into a more organized format, thereby
+#' accommodating instances where multiple producers or genres are linked.
+
+#'
+#' @format A data frame with 38,956 rows and 29 variables
+#' \describe{
+#'    \item{animeID}{Anime ID (as in https://myanimelist.net/anime/animeID)}
+#'    \item{name}{Anime title - extracted from the site.}
+#'    \item{title_english}{Title in English (sometimes is different, sometimes is missing)}
+#'    \item{title_japanese}{Title in Japanese (if Anime is Chinese or Korean, the title, if available, in the respective language)}
+#'    \item{title_synonyms}{Other variants of the title}
+#'    \item{type}{Anime type (e.g. TV, Movie, OVA)}
+#'    \item{source}{Source of anime (i.e original, manga, game, music, visual novel etc.)}
+#'    \item{producers}{Producers}
+#'    \item{genre}{Genre}
+#'    \item{studio}{Studio}
+#'    \item{episodes}{Number of episodes}
+#'    \item{status}{Aired or not aired}
+#'    \item{airing}{True/False is still airing}
+#'    \item{start_date}{Start date (ymd)}
+#'    \item{end_date}{End date (ymd)}
+#'    \item{duration}{Per episode duration or entire duration, text string}
+#'    \item{rating}{Age rating}
+#'    \item{score}{Score (higher = better)}
+#'    \item{scored_by}{Number of users that scored}
+#'    \item{rank}{Rank - weight according to MyAnimeList formula}
+#'    \item{popularity}{Based on how many members/users have the respective anime in their list}
+#'    \item{members}{Number members that added this anime in their list}
+#'    \item{favorites}{Number members that favorites these in their list}
+#'    \item{synopsis}{Long string with anime synopsis}
+#'    \item{background}{Long string with production background and other things}
+#'    \item{premiered}{Anime premiered on season/year}
+#'    \item{broadcast}{When is (regularly) broadcasted}
+#'    \item{related}{Dictionary: related animes, series, games etc.}
+#'    \item{start_year}{Start year}
+#' }
+#' @source \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/tidy_anime.csv}
+
+"anime"

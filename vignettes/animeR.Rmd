@@ -1,0 +1,114 @@
+---
+title: "animeR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{animeR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.height = 4,
+  fig.width = 7
+)
+```
+
+```{r setup, message = F}
+library(animeR)
+```
+
+# Introduction 
+
+The animeR package is a versatile R package designed to help you explore and analyze 2 built-in data: anime and IKEA furniture This vignette will introduce the key functions and features of the animeR package.
+
+# Functions in `animeR`
+
+## `run_app` Function
+
+The `run_app` function allows you to launch a Shiny app for exploring IKEA furniture dataset.
+
+```{r}
+# Launch the Shiny app
+# run_app()
+```
+
+This function provides an interactive way to explore anime and manga data, find users with similar tastes, and access a vast database of anime and manga.
+
+## `five_stat` Function
+
+The `five_stat` function is used to summarize data based on its type and length. It provides summaries for numeric vectors and frequency tables for character or factor vectors.
+
+### Example 1: Numeric Vector
+
+```{r}
+# Numeric vector with at least 5 values
+numeric_data <- c(4.5, 3.8, 4.0, 3.2, 4.1, 3.7, 4.3)
+five_stat(numeric_data)
+```
+
+This will return a data frame with the five-number summary (Minimum, Q1, Median, Q3, Maximum) for the numeric data.
+
+### Example 2: Character Vector
+
+```{r}
+# Character vector
+character_data <- c("Action", "Comedy", "Action", "Sci-Fi", "Comedy")
+five_stat(character_data)
+```
+
+This will return a data frame with value frequencies for the character data.
+
+## `what_ave` Function
+
+The `what_ave` function calculates the average of a numeric variable grouped by a categorical variable.
+
+```{r}
+# Example using anime data
+data <- data.frame(
+  Genre = c("Action", "Comedy", "Action", "Sci-Fi", "Comedy"),
+  Rating = c(4.5, 3.8, 4.0, 3.2, 4.1)
+)
+
+# Calculate average rating by genre
+what_ave(data, categorical_var = Genre, numeric_var = Rating)
+```
+
+This will return a data frame with the average rating for each unique genre in the anime data.
+
+This function can also be used normally when unique values of character variable are grouped and separate by a comma.
+
+```{r}
+data <- data.frame(Genre = c("action, sci-fi", "comedy", "action, drama", "sci-fi, fantasy"),
+                   Score = c(4.5, 3.8, 4.0, 3.2))
+result <- what_ave(data, categorical_var = Genre, numeric_var = Score)
+print(result)
+```
+
+# Other analysis on anime data
+
+There are also other wide ranges of analysis could be performed on the build-in anime data.
+
+For example, we can calculate the average popularity score of each rating to inspect on whether the age border limit the ability to reach out to more audience of an anime, and further how it affects the average score.
+
+```{r, warning = F, message = F}
+library(tidyverse)
+anime %>% 
+  group_by(rating) %>%
+  summarise(average_popularity = round(mean(popularity), 0)) %>%
+  arrange(desc(average_popularity)) 
+```
+
+Instead, what_ave() function can be used to achieve the same purpose.
+
+```{r}
+what_ave(anime, rating, popularity)
+```
+
+# Conclusion
+
+The `animeR` package is a powerful tool for anime enthusiasts and data analysts alike. It provides a user-friendly interface to explore and analyze anime and manga data. We hope you enjoy using the `animeR` package to dive into the world of anime!
+
+More information about using the animeR package can be found in the [*pkgdown site*](https://rpackage-animer.netlify.app/).
